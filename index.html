@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yash Kumar — Data Analyst</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f8f8f7;
+    --surface: #ffffff;
+    --surface-2: #f1f0ec;
+    --border: rgba(0,0,0,0.1);
+    --border-strong: rgba(0,0,0,0.18);
+    --text-primary: #1c1c1a;
+    --text-secondary: #5f5e5a;
+    --text-muted: #888780;
+    --accent: #1a5276;
+    --accent-bg: #e6f1fb;
+    --accent-text: #185fa5;
+    --success-bg: #eaf3de;
+    --success-text: #3b6d11;
+    --success-border: #97c459;
+    --warning-bg: #faeeda;
+    --warning-text: #854f0b;
+    --danger-bg: #fcebeb;
+    --danger-text: #a32d2d;
+    --radius: 8px;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    min-height: 100vh;
+    padding: 2rem 1rem 4rem;
+    line-height: 1.6;
+  }
+
+  .container { max-width: 780px; margin: 0 auto; }
+
+  /* HERO */
+  .hero { background: var(--surface); border: 0.5px solid var(--border); border-radius: 16px; padding: 2rem; margin-bottom: 1rem; }
+  .hero-inner { display: flex; align-items: flex-start; gap: 1.5rem; }
+  .avatar { width: 72px; height: 72px; border-radius: 50%; background: var(--accent-bg); display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 600; color: var(--accent-text); flex-shrink: 0; border: 1.5px solid rgba(24,95,165,0.25); }
+  .hero-text h1 { font-size: 26px; font-weight: 600; color: var(--text-primary); }
+  .hero-text .role { font-size: 14px; color: var(--text-secondary); margin-top: 4px; }
+  .hero-text .tagline { font-size: 14px; color: var(--text-muted); margin-top: 10px; line-height: 1.7; }
+  .badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .badge { font-size: 12px; padding: 3px 10px; border-radius: 20px; border: 0.5px solid var(--border-strong); color: var(--text-secondary); background: var(--surface-2); }
+  .badge.accent { background: var(--accent-bg); color: var(--accent-text); border-color: rgba(24,95,165,0.3); }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+  .link-btn { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-secondary); text-decoration: none; padding: 6px 14px; border: 0.5px solid var(--border-strong); border-radius: var(--radius); background: var(--surface-2); transition: all 0.15s; }
+  .link-btn:hover { background: var(--accent-bg); color: var(--accent-text); border-color: rgba(24,95,165,0.3); }
+  .link-btn i { font-size: 15px; }
+
+  /* CARDS */
+  .card { background: var(--surface); border: 0.5px solid var(--border); border-radius: 16px; padding: 1.5rem; margin-bottom: 1rem; }
+  .section-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.09em; color: var(--text-muted); margin-bottom: 1.1rem; }
+
+  /* STATS */
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .stat-card { background: var(--surface-2); border-radius: var(--radius); padding: 0.85rem 1rem; }
+  .stat-card .num { font-size: 22px; font-weight: 600; color: var(--text-primary); }
+  .stat-card .lbl { font-size: 12px; color: var(--text-muted); margin-top: 2px; line-height: 1.4; }
+
+  /* PROJECTS */
+  .project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .project-card { background: var(--surface-2); border: 0.5px solid var(--border); border-radius: 12px; padding: 1.1rem 1.25rem; text-decoration: none; color: inherit; display: block; transition: border-color 0.15s, transform 0.1s; }
+  .project-card:hover { border-color: rgba(24,95,165,0.4); transform: translateY(-1px); }
+  .p-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+  .p-icon { width: 38px; height: 38px; border-radius: var(--radius); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .p-link { color: var(--text-muted); font-size: 16px; margin-top: 2px; }
+  .project-card:hover .p-link { color: var(--accent-text); }
+  .p-name { font-size: 14px; font-weight: 600; color: var(--text-primary); margin-top: 10px; line-height: 1.4; }
+  .p-metric { font-size: 12px; color: var(--accent-text); margin-top: 5px; font-weight: 600; }
+  .p-desc { font-size: 13px; color: var(--text-secondary); margin-top: 7px; line-height: 1.6; }
+  .p-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 12px; }
+  .p-tag { font-size: 11px; padding: 2px 8px; border-radius: 20px; background: var(--surface); color: var(--text-muted); border: 0.5px solid var(--border-strong); }
+
+  /* EXPERIENCE */
+  .exp-card { background: var(--surface-2); border-radius: 12px; padding: 1.1rem 1.25rem; }
+  .exp-top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .exp-top h3 { font-size: 15px; font-weight: 600; }
+  .exp-date { font-size: 12px; color: var(--text-muted); white-space: nowrap; }
+  .exp-org { font-size: 13px; color: var(--accent-text); margin-top: 3px; font-weight: 500; }
+  .exp-bullets { margin-top: 12px; display: flex; flex-direction: column; gap: 6px; }
+  .exp-bullet { font-size: 13px; color: var(--text-secondary); padding-left: 14px; position: relative; line-height: 1.6; }
+  .exp-bullet::before { content: "•"; position: absolute; left: 0; color: var(--text-muted); }
+
+  /* SKILLS */
+  .skills-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+  .skill-group { background: var(--surface-2); border-radius: var(--radius); padding: 0.85rem 1rem; }
+  .sg-title { font-size: 12px; font-weight: 600; color: var(--text-secondary); margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+  .sg-title i { font-size: 15px; color: var(--accent-text); }
+  .skill-pills { display: flex; flex-wrap: wrap; gap: 5px; }
+  .skill-pill { font-size: 11px; padding: 3px 9px; border-radius: 20px; background: var(--surface); color: var(--text-secondary); border: 0.5px solid var(--border-strong); }
+
+  /* CERTS */
+  .cert-row { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 0.5px solid var(--border); }
+  .cert-row:last-child { border-bottom: none; }
+  .cert-icon { width: 34px; height: 34px; border-radius: var(--radius); background: var(--success-bg); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .cert-icon i { font-size: 17px; color: var(--success-text); }
+  .cert-name { font-size: 14px; font-weight: 500; }
+  .cert-sub { font-size: 12px; color: var(--text-muted); margin-top: 1px; }
+  .cert-badge { margin-left: auto; font-size: 11px; padding: 3px 12px; border-radius: 20px; background: var(--success-bg); color: var(--success-text); border: 0.5px solid var(--success-border); white-space: nowrap; font-weight: 500; }
+
+  /* EDUCATION */
+  .edu-row { display: flex; justify-content: space-between; align-items: flex-start; padding: 12px 0; border-bottom: 0.5px solid var(--border); }
+  .edu-row:last-child { border-bottom: none; }
+  .edu-deg { font-size: 14px; font-weight: 500; }
+  .edu-inst { font-size: 13px; color: var(--accent-text); margin-top: 2px; }
+  .edu-right { text-align: right; flex-shrink: 0; }
+  .edu-date { font-size: 12px; color: var(--text-muted); }
+  .edu-score { font-size: 13px; font-weight: 600; color: var(--text-primary); margin-top: 2px; }
+
+  /* ACHIEVEMENTS */
+  .ach-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 0.5px solid var(--border); }
+  .ach-row:last-child { border-bottom: none; }
+  .ach-icon { width: 34px; height: 34px; border-radius: var(--radius); background: var(--warning-bg); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .ach-icon i { font-size: 17px; color: var(--warning-text); }
+  .ach-text { font-size: 14px; font-weight: 500; }
+  .ach-sub { font-size: 12px; color: var(--text-muted); margin-top: 1px; }
+
+  /* CONTACT */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .contact-item { display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: var(--surface-2); border: 0.5px solid var(--border); border-radius: var(--radius); text-decoration: none; color: var(--text-secondary); font-size: 13px; transition: all 0.15s; }
+  .contact-item:hover { background: var(--accent-bg); color: var(--accent-text); border-color: rgba(24,95,165,0.3); }
+  .contact-item i { font-size: 17px; color: var(--accent-text); flex-shrink: 0; }
+
+  /* FOOTER */
+  .footer { text-align: center; font-size: 12px; color: var(--text-muted); margin-top: 2rem; }
+
+  @media (max-width: 600px) {
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+    .project-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .hero-inner { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="avatar">YK</div>
+      <div class="hero-text">
+        <h1>Yash Kumar</h1>
+        <div class="role">Data Analyst &nbsp;·&nbsp; IIT Patna &nbsp;·&nbsp; CPI 8.78</div>
+        <div class="tagline">Turning raw data into business decisions — SQL, Power BI, Python.<br>Open to entry-level Data Analyst roles.</div>
+        <div class="badges">
+          <span class="badge accent">Available for hire</span>
+          <span class="badge">Google BigQuery</span>
+          <span class="badge">Power BI</span>
+          <span class="badge">Python</span>
+          <span class="badge">EDA</span>
+        </div>
+        <div class="links">
+          <a class="link-btn" href="https://github.com/YH497" target="_blank"><i class="ti ti-brand-github"></i> github.com/YH497</a>
+          <a class="link-btn" href="https://linkedin.com/in/yash-kumar-169b45293" target="_blank"><i class="ti ti-brand-linkedin"></i> LinkedIn</a>
+          <a class="link-btn" href="mailto:forwork_yash@outlook.com"><i class="ti ti-mail"></i> forwork_yash@outlook.com</a>
+          <a class="link-btn" href="tel:+919661250339"><i class="ti ti-phone"></i> +91-9661250339</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="card">
+    <div class="section-label">At a glance</div>
+    <div class="stats-grid">
+      <div class="stat-card"><div class="num">8.78</div><div class="lbl">CPI at IIT Patna</div></div>
+      <div class="stat-card"><div class="num">4</div><div class="lbl">Portfolio projects</div></div>
+      <div class="stat-card"><div class="num">90/100</div><div class="lbl">HCL GUVI score</div></div>
+      <div class="stat-card"><div class="num">$87K</div><div class="lbl">Revenue analyzed</div></div>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="card">
+    <div class="section-label">Projects</div>
+    <div class="project-grid">
+
+      <a class="project-card" href="https://github.com/YH497/E-Commerce-Sales-Funnel-Analysis-BigQuery-SQL-" target="_blank">
+        <div class="p-top">
+          <div class="p-icon" style="background:var(--accent-bg)"><i class="ti ti-chart-funnel" style="color:var(--accent-text)"></i></div>
+          <i class="ti ti-external-link p-link"></i>
+        </div>
+        <div class="p-name">E-Commerce Sales Funnel Analysis</div>
+        <div class="p-metric">↓ 69% drop-off identified at View→Cart</div>
+        <div class="p-desc">Analyzed 5,000-user funnel across 5 stages using Google BigQuery. Email converts 62.5% vs social at 6.9%. Total revenue: $87,975.</div>
+        <div class="p-tags">
+          <span class="p-tag">Google BigQuery</span><span class="p-tag">SQL</span><span class="p-tag">CTEs</span><span class="p-tag">Funnel Analysis</span>
+        </div>
+      </a>
+
+      <a class="project-card" href="https://github.com/YH497" target="_blank">
+        <div class="p-top">
+          <div class="p-icon" style="background:var(--warning-bg)"><i class="ti ti-building" style="color:var(--warning-text)"></i></div>
+          <i class="ti ti-external-link p-link"></i>
+        </div>
+        <div class="p-name">Hotel Booking & Analysis Dashboards</div>
+        <div class="p-metric">119K bookings · 37% cancellation rate surfaced</div>
+        <div class="p-desc">Two interactive Power BI dashboards tracking revenue, occupancy and cancellation patterns. Dynamic slicers by country, hotel type, and year.</div>
+        <div class="p-tags">
+          <span class="p-tag">Power BI</span><span class="p-tag">DAX</span><span class="p-tag">Power Query</span><span class="p-tag">ETL</span>
+        </div>
+      </a>
+
+      <a class="project-card" href="https://github.com/YH497/Customer-Churn-Analysis-Retention-Strategy-Dashboard-" target="_blank">
+        <div class="p-top">
+          <div class="p-icon" style="background:var(--danger-bg)"><i class="ti ti-users" style="color:var(--danger-text)"></i></div>
+          <i class="ti ti-external-link p-link"></i>
+        </div>
+        <div class="p-name">Customer Churn Analysis & Retention</div>
+        <div class="p-metric">Month-to-month customers = highest churn risk</div>
+        <div class="p-desc">Power BI dashboard identifying high-risk churn segments using DAX measures. Month-to-month and electronic check users churn significantly more.</div>
+        <div class="p-tags">
+          <span class="p-tag">Power BI</span><span class="p-tag">DAX</span><span class="p-tag">Power Query</span><span class="p-tag">EDA</span>
+        </div>
+      </a>
+
+      <a class="project-card" href="https://github.com/YH497/Supply-chain-logistic-dashboard" target="_blank">
+        <div class="p-top">
+          <div class="p-icon" style="background:var(--success-bg)"><i class="ti ti-truck" style="color:var(--success-text)"></i></div>
+          <i class="ti ti-external-link p-link"></i>
+        </div>
+        <div class="p-name">Supply Chain Logistics Dashboard</div>
+        <div class="p-metric">Star schema · dim/fact table model</div>
+        <div class="p-desc">Power BI dashboard with a proper star schema model tracking logistics KPIs across supply chain dimensions and regions.</div>
+        <div class="p-tags">
+          <span class="p-tag">Power BI</span><span class="p-tag">Star Schema</span><span class="p-tag">DAX</span><span class="p-tag">Logistics</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="card">
+    <div class="section-label">Experience</div>
+    <div class="exp-card">
+      <div class="exp-top">
+        <div>
+          <h3>Data Analytics Virtual Intern</h3>
+          <div class="exp-org">HCL GUVI x IIT Patna</div>
+        </div>
+        <div class="exp-date">Jul – Sep 2025</div>
+      </div>
+      <div class="exp-bullets">
+        <div class="exp-bullet">Built two Power BI dashboards analyzing hotel booking data across 119K+ bookings — tracking revenue, occupancy, and cancellation trends</div>
+        <div class="exp-bullet">Applied Power Query ETL, DAX measures, and data storytelling techniques for stakeholder-facing reporting</div>
+        <div class="exp-bullet">Achieved Grade A+ with 90/100 — top performer in the IIT Patna cohort</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="card">
+    <div class="section-label">Technical skills</div>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="sg-title"><i class="ti ti-database"></i> Data & SQL</div>
+        <div class="skill-pills">
+          <span class="skill-pill">SQL</span><span class="skill-pill">Google BigQuery</span><span class="skill-pill">MySQL</span><span class="skill-pill">EDA</span><span class="skill-pill">ETL</span><span class="skill-pill">Data Cleaning</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="sg-title"><i class="ti ti-chart-dots"></i> Visualization</div>
+        <div class="skill-pills">
+          <span class="skill-pill">Power BI</span><span class="skill-pill">DAX</span><span class="skill-pill">Power Query</span><span class="skill-pill">Matplotlib</span><span class="skill-pill">Seaborn</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="sg-title"><i class="ti ti-code"></i> Programming</div>
+        <div class="skill-pills">
+          <span class="skill-pill">Python</span><span class="skill-pill">Pandas</span><span class="skill-pill">NumPy</span><span class="skill-pill">Microsoft Excel</span><span class="skill-pill">HTML/CSS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="card">
+    <div class="section-label">Education</div>
+    <div class="edu-row">
+      <div>
+        <div class="edu-deg">B.Sc. in Computer Science & Data Analytics</div>
+        <div class="edu-inst">Indian Institute of Technology, Patna</div>
+      </div>
+      <div class="edu-right">
+        <div class="edu-date">Jun 2023 – Jul 2026</div>
+        <div class="edu-score">CPI: 8.78</div>
+      </div>
+    </div>
+    <div class="edu-row">
+      <div>
+        <div class="edu-deg">Bachelor of Computer Applications (BCA)</div>
+        <div class="edu-inst">L.N.D College, Motihari (BRABU)</div>
+      </div>
+      <div class="edu-right">
+        <div class="edu-date">2021 – 2024</div>
+        <div class="edu-score">73.56%</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CERTIFICATIONS -->
+  <div class="card">
+    <div class="section-label">Certifications</div>
+    <div class="cert-row">
+      <div class="cert-icon"><i class="ti ti-certificate"></i></div>
+      <div>
+        <div class="cert-name">HCL GUVI x IIT Patna — 90-Day Internship Program</div>
+        <div class="cert-sub">Jul – Sep 2025</div>
+      </div>
+      <div class="cert-badge">A+ · 90/100</div>
+    </div>
+    <div class="cert-row">
+      <div class="cert-icon"><i class="ti ti-certificate"></i></div>
+      <div>
+        <div class="cert-name">Accenture — Data Analytics & Visualization</div>
+        <div class="cert-sub">May – Jun 2024</div>
+      </div>
+      <div class="cert-badge">Completed</div>
+    </div>
+  </div>
+
+  <!-- ACHIEVEMENTS -->
+  <div class="card">
+    <div class="section-label">Achievements</div>
+    <div class="ach-row">
+      <div class="ach-icon"><i class="ti ti-trophy"></i></div>
+      <div>
+        <div class="ach-text">Hack N Tech Hackathon — Phoenix Fest 2026</div>
+        <div class="ach-sub">Student Technical Council, IIT Patna · Jun 2026</div>
+      </div>
+    </div>
+    <div class="ach-row">
+      <div class="ach-icon"><i class="ti ti-users"></i></div>
+      <div>
+        <div class="ach-text">Volunteer — E-Summit, IIT Patna</div>
+        <div class="ach-sub">Coordinated logistics for 500+ participant entrepreneurship event · Jan–Mar 2024</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="card">
+    <div class="section-label">Contact</div>
+    <div class="contact-grid">
+      <a class="contact-item" href="mailto:forwork_yash@outlook.com"><i class="ti ti-mail"></i> forwork_yash@outlook.com</a>
+      <a class="contact-item" href="tel:+919661250339"><i class="ti ti-phone"></i> +91-9661250339</a>
+      <a class="contact-item" href="https://github.com/YH497" target="_blank"><i class="ti ti-brand-github"></i> github.com/YH497</a>
+      <a class="contact-item" href="https://linkedin.com/in/yash-kumar-169b45293" target="_blank"><i class="ti ti-brand-linkedin"></i> LinkedIn Profile</a>
+    </div>
+  </div>
+
+  <div class="footer">Built by Yash Kumar · IIT Patna · 2026</div>
+
+</div>
+</body>
+</html>
